@@ -1,3 +1,4 @@
+/*
 // For OLED LCD
 #define I2C_SDA 21
 #define I2C_SCL 22
@@ -54,3 +55,36 @@
 // (which is the default for the sx1262interface code)
 #define SX126X_E22
 #endif
+*/
+
+// Port to esp32-C3
+
+#define USE_RF95
+
+#ifndef USE_JTAG
+    #define LORA_RESET 10
+#endif
+
+#undef RF95_SCK
+#define RF95_SCK 3
+#undef RF95_MISO
+#define RF95_MISO 5
+#undef RF95_MOSI
+#define RF95_MOSI 4
+#undef RF95_NSS
+#define RF95_NSS 6 //18
+#define LORA_DIO0 1 // Lora-DIO0
+#define LORA_DIO1 7 // needed idk
+
+#define RADIOLIB_EXCLUDE_AFSK
+
+//#define EXT_NOTIFY_OUT 2 // LED
+
+// GPS
+#undef GPS_RX_PIN
+#undef GPS_TX_PIN
+
+
+#define GPS_RX_PIN U0TXD_OUT_IDX//12
+#define GPS_TX_PIN U0RXD_IN_IDX//15
+#define GPS_UBLOX
